@@ -5,28 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE SHARP CUT | Premium Barber Lounge</title>
     <style>
-        /* Modern Vibrant Canvas & Typography */
         body { 
             background-color: #0d0e12; 
             color: #ffffff; 
-            font-family: 'Montserrat', 'Segoe UI', Helvetica, sans-serif; 
+            font-family: 'Montserrat', sans-serif; 
             margin: 0; 
             padding: 0; 
             text-align: center;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* Dynamic Moving Parts: Particle Background Engine */
         #particle-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
             background: radial-gradient(circle at 50% 50%, #1a1c24 0%, #0d0e12 100%);
-            overflow: hidden;
         }
         .bubble {
             position: absolute;
@@ -36,249 +29,182 @@
             bottom: -100px;
         }
         @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            0% { transform: translateY(0); opacity: 0; }
             10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+            100% { transform: translateY(-120vh); opacity: 0; }
         }
 
-        /* High-Voltage Top Navigation & Moving Barber Poles */
         nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            padding: 25px 15px;
-            background: #ffffff; /* Crisp white top panel */
-            border-bottom: 5px solid #ff2a2a;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            display: flex; justify-content: center; align-items: center; gap: 20px;
+            padding: 25px 15px; background: #ffffff; border-bottom: 5px solid #ff2a2a;
         }
-        nav h1 {
-            color: #0d0e12;
-            margin: 0;
-            font-size: 28px;
-            font-weight: 900;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
+        nav h1 { color: #0d0e12; margin: 0; font-size: 28px; font-weight: 900; letter-spacing: 3px; }
+        
         .barber-pole {
-            width: 16px;
-            height: 40px;
-            border: 2px solid #0d0e12;
-            background: linear-gradient(
-                45deg,
-                #ff2a2a 25%, #ffffff 25%,
-                #ffffff 50%, #2a75ff 50%,
-                #2a75ff 75%, #ff2a2a 75%
-            );
-            background-size: 20px 20px;
-            animation: movePole 0.8s linear infinite;
+            width: 16px; height: 40px; border: 2px solid #0d0e12;
+            background: linear-gradient(45deg, #ff2a2a 25%, #ffffff 25%, #ffffff 50%, #2a75ff 50%, #2a75ff 75%, #ff2a2a 75%);
+            background-size: 20px 20px; animation: movePole 0.8s linear infinite;
         }
         @keyframes movePole {
             0% { background-position: 0 0; }
             100% { background-position: 0 20px; }
         }
 
-        /* Vibrant Eye-Popping Hero Presentation Header */
-        header { 
-            padding: 90px 20px; 
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        header h2 { 
-            font-size: 48px; 
-            font-weight: 900;
-            margin: 0 0 20px 0; 
-            color: #ffffff; 
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            line-height: 1.1;
-        }
-        header h2 span.red {
-            color: #ff2a2a;
-            text-shadow: 0 0 15px rgba(255, 42, 42, 0.6);
-        }
-        header h2 span.blue {
-            color: #2a75ff;
-            text-shadow: 0 0 15px rgba(42, 117, 255, 0.6);
-        }
-        header p { 
-            color: #cfd2dc; 
-            max-width: 460px; 
-            margin: 0 auto 40px auto; 
-            line-height: 1.7;
-            font-size: 16px;
-            font-weight: 500;
-        }
+        header { padding: 90px 20px; }
+        header h2 { font-size: 48px; font-weight: 900; margin: 0 0 20px 0; }
+        header h2 span.red { color: #ff2a2a; text-shadow: 0 0 15px rgba(255, 42, 42, 0.6); }
+        header h2 span.blue { color: #2a75ff; text-shadow: 0 0 15px rgba(42, 117, 255, 0.6); }
+        header p { color: #cfd2dc; max-width: 460px; margin: 0 auto 40px auto; line-height: 1.7; }
 
-        /* Action Dynamic Buttons linked to your phone number */
         .btn-action { 
-            background: #ffffff; /* Stark pop white button */
-            color: #0d0e12; 
-            padding: 16px 40px; 
-            text-decoration: none; 
-            font-weight: 900; 
-            border-radius: 50px; 
-            display: inline-block; 
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            font-size: 14px;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 25px rgba(255,255,255,0.15);
-            border: 3px solid #ffffff;
-        }
-        .btn-action:hover {
-            background: #ff2a2a;
-            color: #ffffff;
-            border-color: #ff2a2a;
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(255, 42, 42, 0.4);
+            background: #ffffff; color: #0d0e12; padding: 16px 40px; text-decoration: none; 
+            font-weight: 900; border-radius: 50px; display: inline-block; text-transform: uppercase;
+            box-shadow: 0 10px 25px rgba(255,255,255,0.15); border: 3px solid #ffffff;
         }
 
-        /* Modern Crisp Grid Elements */
         section { padding: 60px 20px; max-width: 500px; margin: 0 auto; }
-        .section-headline {
-            color: #ffffff;
-            font-size: 32px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 35px;
-            position: relative;
-            display: inline-block;
-        }
-        .section-headline::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #ff2a2a, #2a75ff);
-        }
+        .section-headline { font-size: 32px; font-weight: 900; text-transform: uppercase; margin-bottom: 35px; }
 
-        /* Vibrant Contrast Pricing Panels */
         .price-card { 
-            background: #ffffff; /* Pure clean high-contrast crisp card background */
-            color: #0d0e12;
-            border-left: 6px solid #2a75ff;
-            padding: 24px; 
-            margin-bottom: 20px; 
-            border-radius: 12px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-            text-align: left;
+            background: #ffffff; color: #0d0e12; border-left: 6px solid #2a75ff;
+            padding: 24px; margin-bottom: 20px; border-radius: 12px; 
+            display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 25px rgba(0,0,0,0.4);
         }
-        .price-card h4 { margin: 0 0 5px 0; font-size: 20px; font-weight: 800; text-transform: uppercase; }
-        .price-card p { margin: 0; font-size: 14px; color: #4b5563; font-weight: 500; }
+        .price-card h4 { margin: 0 0 5px 0; font-size: 20px; font-weight: 800; }
+        .price-card p { margin: 0; font-size: 14px; color: #4b5563; }
         .price-value { color: #ff2a2a; font-weight: 900; font-size: 24px; }
 
-        /* Crisp Upload Showcase Grid Vault */
         .showcase-vault { 
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-blur: 10px;
-            border: 2px dashed rgba(255,255,255,0.15); 
-            padding: 40px 20px; 
-            border-radius: 16px; 
-            margin-top: 20px; 
+            background: rgba(255, 255, 255, 0.04); border: 2px dashed rgba(255,255,255,0.15); 
+            padding: 40px 20px; border-radius: 16px; margin-top: 20px; 
         }
         .upload-trigger { 
-            background: linear-gradient(135deg, #ff2a2a 0%, #2a75ff 100%);
-            color: #ffffff; 
-            padding: 14px 30px; 
-            font-weight: 900; 
-            border-radius: 50px; 
-            cursor: pointer; 
-            display: inline-block; 
-            margin-top: 15px; 
-            text-transform: uppercase;
-            font-size: 13px;
-            box-shadow: 0 8px 20px rgba(42, 117, 255, 0.3);
-            transition: transform 0.2s;
+            background: linear-gradient(135deg, #ff2a2a 0%, #2a75ff 100%); color: #ffffff; 
+            padding: 14px 30px; font-weight: 900; border-radius: 50px; cursor: pointer; display: inline-block;
         }
-        .upload-trigger:active { transform: scale(0.95); }
 
-        #galleryGrid { 
-            display: grid; 
-            grid-template-cols: repeat(2, 1fr); 
-            gap: 15px; 
-            margin-top: 30px; 
-        }
-        #galleryGrid img { 
-            width: 100%; 
-            aspect-ratio: 1; 
-            object-fit: cover; 
-            border-radius: 12px; 
-            border: 3px solid #ffffff; /* Bright white photo framing */
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
+        #galleryGrid { display: grid; grid-template-cols: repeat(2, 1fr); gap: 15px; margin-top: 30px; }
+        #galleryGrid img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; border: 3px solid #ffffff; }
         
-        footer { 
-            padding: 60px 20px; 
-            background: #060709; 
-            border-top: 1px solid rgba(255,255,255,0.08); 
-        }
-        .btn-secondary {
-            background: transparent;
-            color: #ffffff;
-            border: 2px solid #ffffff;
-            padding: 12px 30px;
-            text-decoration: none;
-            font-weight: 800;
-            border-radius: 50px;
-            text-transform: uppercase;
-            font-size: 13px;
-        }
+        footer { padding: 60px 20px; background: #060709; }
     </style>
 </head>
 <body>
 
-    <!-- Dynamic Canvas Floating Bubble Background Element Engine -->
     <div id="particle-bg"></div>
 
-    <!-- Clean High-Energy Top Nav Header Grid -->
     <nav>
         <div class="barber-pole"></div>
         <h1>THE SHARP CUT</h1>
         <div class="barber-pole"></div>
     </nav>
 
-    <!-- Popping Bold Presentation Area -->
     <header>
         <h2>LOOK SHARP.<br><span class="red">DEMAND</span> <span class="blue">RESPECT.</span></h2>
         <p>Premium modern grooming lounge engineered for top tier styling. Experience surgical skin fades, tactical beard architecture, and master hot towel shaves.</p>
-        <!-- Correctly linked to open your telephone application instantly -->
         <a href="tel:+2348148648287" class="btn-action">💥 Book Appointment Now</a>
     </header>
 
-    <!-- Crisp High Contrast Services Menu Matrix -->
     <section>
         <div class="section-headline">Services & Pricing</div>
         <div class="price-card">
             <div>
                 <h4>Signature Haircut</h4>
-                <p>Premium master cut tailored complete with straight razor lineup.</p>
+                <p>Premium master cut complete with straight razor lineup.</p>
             </div>
             <div class="price-value">₦5,000</div>
         </div>
         <div class="price-card">
             <div>
                 <h4>Beard Architecture</h4>
-                <p>Surgical shaping, hot towel conditioning, and massage lining.</p>
+                <p>Surgical shaping, hot towel conditioning, and lining.</p>
             </div>
             <div class="price-value">₦3,500</div>
         </div>
     </section>
 
-    <!-- Lookbook Upload Station Block -->
-    <section style="max-width: 100%; background: rgba(0, 0, 0, 0.3); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 70px 20px;">
+    <section style="max-width: 100%; background: rgba(0, 0, 0, 0.3); padding: 70px 20px;">
         <div style="max-width: 500px; margin: 0 auto;">
             <div class="section-headline">Our Fresh Cuts</div>
             <div class="showcase-vault">
-                <p style="font-size: 15px; margin: 0; color: #a0aec0; font-weight: 500;">Studio Portfolio Vault (Add your custom haircut styles)</p>
+                <p style="font-size: 15px; margin: 0; color: #a0aec0;">Studio Portfolio Vault (Add your hairstyles)</p>
                 <label class="upload-trigger">
                     📷 Choose Photo
                     <input type="file" id="imageUpload" accept="image/*" style="display: none;">
                 </label>
             </div>
+            <div id="galleryGrid"></div>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-size: 12px; color: #4a5568;">© 2026 THE SHARP CUT LOUNGE. KOSOFE, LAGOS. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        // Particle background generator loop
+        const bg = document.getElementById('particle-bg');
+        for (let i = 0; i < 15; i++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            const size = Math.random() * 60 + 20;
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            bubble.style.left = `${Math.random() * 100}%`;
+            bubble.style.animationDelay = `${Math.random() * 8}s`;
+            bg.appendChild(bubble);
+        }
+
+        const imageUpload = document.getElementById('imageUpload');
+        const galleryGrid = document.getElementById('galleryGrid');
+
+        function loadSavedImages() {
+            const savedImages = JSON.parse(localStorage.getItem('barberCuts')) || [];
+            galleryGrid.innerHTML = '';
+            savedImages.forEach(imgData => { renderImageCard(imgData); });
+        }
+
+        function renderImageCard(src) {
+            const img = document.createElement('img');
+            img.src = src;
+            galleryGrid.prepend(img);
+        }
+
+        imageUpload.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const img = new Image();
+                    img.onload = function() {
+                        // Create a canvas to force-compress the massive iPhone file
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        
+                        // Scale picture down to max 600px width for fast phone rendering
+                        const maxW = 600;
+                        const scale = maxW / img.width;
+                        canvas.width = maxW;
+                        canvas.height = img.height * scale;
+                        
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        
+                        // Convert to high compression jpeg data url
+                        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.7);
+                        
+                        const savedImages = JSON.parse(localStorage.getItem('barberCuts')) || [];
+                        savedImages.push(compressedBase64);
+                        localStorage.setItem('barberCuts', JSON.stringify(savedImages));
+                        
+                        renderImageCard(compressedBase64);
+                    };
+                    img.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        loadSavedImages();
+    </script>
+</body>
+</html>
