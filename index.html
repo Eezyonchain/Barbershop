@@ -57,18 +57,11 @@
         .price-card p { margin: 0; font-size: 13px; color: #4b5563; }
         .price-value { color: #ff2a2a; font-weight: 900; font-size: 22px; }
         
-        /* 💈 Premium 3-Column Instagram Style Layout 💈 */
         #galleryGrid { 
-            display: grid; 
-            grid-template-cols: repeat(3, 1fr); 
-            gap: 4px; 
-            width: 100%; max-width: 600px;
-            margin: 20px auto 0 auto; padding: 0 5px;
+            display: grid; grid-template-cols: repeat(3, 1fr); gap: 4px; 
+            width: 100%; max-width: 600px; margin: 20px auto 0 auto; padding: 0 5px;
         }
-        .gallery-item {
-            width: 100%; aspect-ratio: 1 / 1; 
-            overflow: hidden; background-color: #1a1c24; position: relative;
-        }
+        .gallery-item { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; background-color: #1a1c24; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
         footer { padding: 40px 20px; background: #060709; }
     </style>
@@ -88,17 +81,11 @@
     <section>
         <div class="section-headline">Services & Pricing</div>
         <div class="price-card">
-            <div>
-                <h4>Signature Haircut</h4>
-                <p>Premium master cut complete with straight razor lineup.</p>
-            </div>
+            <div><h4>Signature Haircut</h4><p>Premium master cut complete with straight razor lineup.</p></div>
             <div class="price-value">₦5,000</div>
         </div>
         <div class="price-card">
-            <div>
-                <h4>Beard Architecture</h4>
-                <p>Surgical shaping, hot towel conditioning, and lining.</p>
-            </div>
+            <div><h4>Beard Architecture</h4><p>Surgical shaping, hot towel conditioning, and lining.</p></div>
             <div class="price-value">₦3,500</div>
         </div>
     </section>
@@ -108,28 +95,24 @@
             <div class="section-headline">Our Fresh Cuts</div>
         </div>
         
-        <!-- Connected cleanly to read your directly uploaded GitHub files -->
+        <!-- Linked precisely to your real uploaded iPhone file names -->
         <div id="galleryGrid">
-            <div class="gallery-item"><img src="cut1.jpg" onerror="this.parentElement.style.display='none'"></div>
-            <div class="gallery-item"><img src="cut2.jpg" onerror="this.parentElement.style.display='none'"></div>
-            <div class="gallery-item"><img src="cut3.jpg" onerror="this.parentElement.style.display='none'"></div>
-            <div class="gallery-item"><img src="cut4.jpg" onerror="this.parentElement.style.display='none'"></div>
-            <div class="gallery-item"><img src="cut5.jpg" onerror="this.parentElement.style.display='none'"></div>
-            <div class="gallery-item"><img src="cut6.jpg" onerror="this.parentElement.style.display='none'"></div>
+            <div class="gallery-item"><img src="IMG_8155.jpeg"></div>
+            <div class="gallery-item"><img src="IMG_8160.jpeg"></div>
+            <div class="gallery-item"><img src="IMG_8161.jpeg"></div>
+            <div class="gallery-item"><img src="IMG_8162.jpeg"></div>
+            <div class="gallery-item"><img src="IMG_8163.jpeg"></div>
+            <div class="gallery-item"><img src="IMG_8173.jpeg"></div>
         </div>
     </section>
     
-    <footer>
-        <p style="font-size: 11px; color: #4a5568;">© 2026 THE SHARP CUT LOUNGE. KOSOFE, LAGOS. ALL RIGHTS RESERVED.</p>
-    </footer>
+    <footer><p style="font-size: 11px; color: #4a5568;">© 2026 THE SHARP CUT LOUNGE. KOSOFE, LAGOS. ALL RIGHTS RESERVED.</p></footer>
 
     <script>
         const bg = document.getElementById('particle-bg');
         for (let i = 0; i < 12; i++) {
-            const bubble = document.createElement('div');
-            bubble.className = 'bubble';
-            const size = Math.random() * 50 + 20;
-            bubble.style.width = `${size}px`; bubble.style.height = `${size}px`;
+            const bubble = document.createElement('div'); bubble.className = 'bubble';
+            const size = Math.random() * 50 + 20; bubble.style.width = `${size}px`; bubble.style.height = `${size}px`;
             bubble.style.left = `${Math.random() * 100}%`; bubble.style.animationDelay = `${Math.random() * 6}s`;
             bg.appendChild(bubble);
         }
