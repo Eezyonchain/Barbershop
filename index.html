@@ -6,10 +6,8 @@
     <title>THE SHARP CUT | Premium Barber Lounge</title>
     <style>
         *, *:before, *:after { box-sizing: border-box; }
-        
         body { 
-            background-color: #0d0e12; 
-            color: #ffffff; 
+            background-color: #0d0e12; color: #ffffff; 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
             margin: 0; padding: 0; text-align: center; overflow-x: hidden;
         }
@@ -49,7 +47,6 @@
         }
         section { padding: 40px 20px; max-width: 450px; margin: 0 auto; }
         .section-headline { font-size: 26px; font-weight: 900; text-transform: uppercase; margin-bottom: 30px; }
-        
         .price-card { 
             background: #ffffff; color: #0d0e12; border-left: 6px solid #2a75ff;
             padding: 22px; margin-bottom: 18px; border-radius: 12px; 
@@ -60,39 +57,19 @@
         .price-card p { margin: 0; font-size: 13px; color: #4b5563; }
         .price-value { color: #ff2a2a; font-weight: 900; font-size: 22px; }
         
-        .showcase-vault { 
-            background: rgba(255, 255, 255, 0.04); border: 2px dashed rgba(255,255,255,0.15); 
-            padding: 30px 20px; border-radius: 16px; margin-bottom: 30px;
-        }
-        .upload-trigger { 
-            background: linear-gradient(135deg, #ff2a2a 0%, #2a75ff 100%); color: #ffffff; 
-            padding: 14px 30px; font-weight: 900; border-radius: 50px; cursor: pointer; display: inline-block;
-            text-transform: uppercase; font-size: 12px;
-        }
-        
         /* 💈 Premium 3-Column Instagram Style Layout 💈 */
         #galleryGrid { 
             display: grid; 
             grid-template-cols: repeat(3, 1fr); 
             gap: 4px; 
-            width: 100%;
-            max-width: 600px;
-            margin: 20px auto 0 auto;
-            padding: 0 5px;
+            width: 100%; max-width: 600px;
+            margin: 20px auto 0 auto; padding: 0 5px;
         }
         .gallery-item {
-            width: 100%;
-            aspect-ratio: 1 / 1; 
-            overflow: hidden;
-            background-color: #1a1c24;
-            position: relative;
+            width: 100%; aspect-ratio: 1 / 1; 
+            overflow: hidden; background-color: #1a1c24; position: relative;
         }
-        .gallery-item img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            display: block;
-        }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
         footer { padding: 40px 20px; background: #060709; }
     </style>
 </head>
@@ -129,27 +106,16 @@
     <section style="max-width: 100%; background: rgba(0, 0, 0, 0.2); padding: 50px 0;">
         <div style="max-width: 450px; margin: 0 auto; padding: 0 20px;">
             <div class="section-headline">Our Fresh Cuts</div>
-            <div class="showcase-vault">
-                <p style="font-size: 14px; margin: 0 0 15px 0; color: #a0aec0;">Local Preview (Images added here show on your phone only)</p>
-                <label class="upload-trigger">
-                    📷 Choose Photo
-                    <input type="file" id="imageUpload" accept="image/*" style="display: none;">
-                </label>
-            </div>
         </div>
         
-        <!-- Grid Container out of constraint to flow edge-to-edge -->
+        <!-- Connected cleanly to read your directly uploaded GitHub files -->
         <div id="galleryGrid">
-            <div class="gallery-item"><img src="https://ibb.co"></div>
-            <div class="gallery-item"><img src="https://ibb.co"></div>
-            <div class="gallery-item"><img src="https://ibb.co"></div>
-            <div class="gallery-item"><img src="https://ibb.co"></div>
-            <div class="gallery-item"><img src="https://ibb.co"></div>
-            <div class="gallery-item"><img src="https://ibb.co"></div>
-            <div class="gallery-item"><img src="https://ibb.co"></div>
-            <div class="gallery-item"><img src="https://ibb.co"></div>
-            <div class="gallery-item"><img src="https://ibb.co"></div>
-            <div class="gallery-item"><img src="https://ibb.co"></div>
+            <div class="gallery-item"><img src="cut1.jpg" onerror="this.parentElement.style.display='none'"></div>
+            <div class="gallery-item"><img src="cut2.jpg" onerror="this.parentElement.style.display='none'"></div>
+            <div class="gallery-item"><img src="cut3.jpg" onerror="this.parentElement.style.display='none'"></div>
+            <div class="gallery-item"><img src="cut4.jpg" onerror="this.parentElement.style.display='none'"></div>
+            <div class="gallery-item"><img src="cut5.jpg" onerror="this.parentElement.style.display='none'"></div>
+            <div class="gallery-item"><img src="cut6.jpg" onerror="this.parentElement.style.display='none'"></div>
         </div>
     </section>
     
@@ -163,44 +129,10 @@
             const bubble = document.createElement('div');
             bubble.className = 'bubble';
             const size = Math.random() * 50 + 20;
-            bubble.style.width = `${size}px`;
-            bubble.style.height = `${size}px`;
-            bubble.style.left = `${Math.random() * 100}%`;
-            bubble.style.animationDelay = `${Math.random() * 6}s`;
+            bubble.style.width = `${size}px`; bubble.style.height = `${size}px`;
+            bubble.style.left = `${Math.random() * 100}%`; bubble.style.animationDelay = `${Math.random() * 6}s`;
             bg.appendChild(bubble);
         }
-
-        const imageUpload = document.getElementById('imageUpload');
-        const galleryGrid = document.getElementById('galleryGrid');
-
-        function loadSavedImages() {
-            const savedImages = JSON.parse(localStorage.getItem('barberCuts')) || [];
-            savedImages.forEach(imgData => { renderImageCard(imgData); });
-        }
-
-        function renderImageCard(src) {
-            const container = document.createElement('div');
-            container.className = 'gallery-item';
-            const img = document.createElement('img');
-            img.src = src;
-            container.appendChild(img);
-            galleryGrid.insertBefore(container, galleryGrid.firstChild);
-        }
-
-        imageUpload.addEventListener('change', function(e) {
-            const file = e.target.files;
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    const img = new Image();
-                    img.onload = function() {
-                        const canvas = document.createElement('canvas');
-                        const ctx = canvas.getContext('2d');
-                        const max_size = 500;
-                        let width = img.width; let height = img.height;
-                        if (width > height) { if (width > max_size) { height *= max_size / width; width = max_size; } } 
-                        else { if (height > max_size) { width *= max_size / height; height = max_size; } }
-                        canvas.width = width; canvas.height = height;
-                        ctx.drawImage(img, 0, 0, width, height);
-                        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.6);
-                        
+    </script>
+</body>
+</html>
