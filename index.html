@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sharp Cut | Executive Barber Shop</title>
+    <script src="https://jsdelivr.net"></script>
+    <link href="https://cloudflare.com" rel="stylesheet">
+    <style>html { scroll-behavior: smooth; }</style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 font-sans antialiased">
+    <nav class="border-b border-zinc-900 bg-zinc-950/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-black tracking-widest text-amber-500 flex items-center gap-2"><i class="fas fa-scissors"></i> THE SHARP CUT</h1>
+            <a href="#book" class="bg-amber-500 text-zinc-950 px-5 py-2 rounded-sm font-bold text-xs uppercase tracking-wider hover:bg-amber-400 transition">Book Now</a>
+        </div>
+    </nav>
+    <header class="relative bg-zinc-900 border-b border-zinc-900 py-24 text-center">
+        <div class="max-w-3xl mx-auto px-6">
+            <span class="text-xs uppercase tracking-widest text-amber-500 font-bold border border-amber-500/30 px-3 py-1 rounded-full bg-amber-500/5">Premium Grooming Lounge</span>
+            <h2 class="text-4xl font-black mt-6 mb-6 tracking-tight uppercase">Look Sharp. <br><span class="text-amber-500">Demand Respect.</span></h2>
+            <p class="text-zinc-400 text-base mb-10 max-w-xl mx-auto leading-relaxed">Expert grooming engineered for the modern gentleman. Experience sharp fades, precision trims, and signature hot towel treatments.</p>
+            <div class="flex flex-col gap-4">
+                <a href="#book" class="bg-amber-500 text-zinc-950 px-8 py-4 rounded-sm font-bold uppercase tracking-wider text-sm">Book Your Chair</a>
+            </div>
+        </div>
+    </header>
+    <section id="services" class="py-16 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-12"><h2 class="text-2xl font-black uppercase tracking-wide">Services & Pricing</h2></div>
+        <div class="space-y-4">
+            <div class="bg-zinc-900 p-6 border border-zinc-800 rounded-sm flex justify-between items-center">
+                <div><h4 class="text-lg font-bold uppercase">Signature Haircut</h4><p class="text-zinc-400 text-xs">Tailored cut with razor lineup.</p></div>
+                <span class="text-amber-500 font-extrabold text-lg">₦5,000</span>
+            </div>
+            <div class="bg-zinc-900 p-6 border border-zinc-800 rounded-sm flex justify-between items-center">
+                <div><h4 class="text-lg font-bold uppercase">Beard Design</h4><p class="text-zinc-400 text-xs">Precision shaping and premium oil.</p></div>
+                <span class="text-amber-500 font-extrabold text-lg">₦3,500</span>
+            </div>
+        </div>
+    </section>
+    <section id="gallery" class="py-16 bg-zinc-900/30 border-t border-b border-zinc-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-black uppercase tracking-wide mb-4">Our Fresh Cuts</h2>
+                <label class="cursor-pointer bg-amber-500 text-zinc-950 px-4 py-2 rounded-sm font-bold text-xs uppercase tracking-wider inline-block">
+                    <i class="fas fa-upload mr-1"></i> Choose Photo <input type="file" id="imageUpload" accept="image/*" class="hidden">
+                </label>
+            </div>
+            <div id="galleryGrid" class="grid grid-cols-2 gap-4">
+                <div class="aspect-square bg-zinc-900 flex flex-col items-center justify-center border border-zinc-800 p-4 text-center rounded-sm col-span-2">
+                    <i class="fas fa-camera text-zinc-700 text-3xl mb-2"></i><p class="text-xs text-zinc-500">Your uploaded cuts will show up here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="book" class="py-16 text-center bg-zinc-950">
+        <a href="tel:+2348001234567" class="bg-zinc-900 border border-zinc-800 text-amber-500 px-8 py-4 rounded-sm font-bold uppercase tracking-wider text-sm"><i class="fas fa-phone mr-2"></i> Call To Book</a>
+    </footer>
+    <script>
+        const imageUpload = document.getElementById('imageUpload');
+        const galleryGrid = document.getElementById('galleryGrid');
+        function loadSavedImages() {
+            const savedImages = JSON.parse(localStorage.getItem('barberCuts')) || [];
+            if(savedImages.length > 0) {
+                galleryGrid.innerHTML = '';
+                savedImages.forEach(imgData => { renderImageCard(imgData); });
+            }
+        }
+        function renderImageCard(src) {
+            const container = document.createElement('div');
+            container.className = 'relative aspect-square overflow-hidden border border-zinc-800 rounded-sm bg-zinc-900';
+            container.innerHTML = `<img src="${src}" class="w-full h-full object-cover">`;
+            galleryGrid.prepend(container);
+        }
+        imageUpload.addEventListener('change', function(e) {
+            const file = e.target.files;
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const base64Image = event.target.result;
+                    const savedImages = JSON.parse(localStorage.getItem('barberCuts')) || [];
+                    savedImages.push(base64Image);
+                    localStorage.setItem('barberCuts', JSON.stringify(savedImages));
+                    if(savedImages.length === 1) galleryGrid.innerHTML = '';
+                    renderImageCard(base64Image);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        loadSavedImages();
+    </script>
+</body>
+</html>
