@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE SHARP CUT | Premium Barber Lounge</title>
     <style>
-        /* Force perfect sizing rules for phone screens */
         *, *:before, *:after { box-sizing: border-box; }
         
         body { 
@@ -73,8 +72,8 @@
         /* 💈 Premium 3-Column Instagram Style Layout 💈 */
         #galleryGrid { 
             display: grid; 
-            grid-template-cols: repeat(3, 1fr); /* Forces exactly 3 items per row on mobile */
-            gap: 4px; /* Tiny spacing just like Instagram grids */
+            grid-template-cols: repeat(3, 1fr); 
+            gap: 4px; 
             width: 100%;
             max-width: 600px;
             margin: 20px auto 0 auto;
@@ -82,7 +81,7 @@
         }
         .gallery-item {
             width: 100%;
-            aspect-ratio: 1 / 1; /* Forces perfectly square images */
+            aspect-ratio: 1 / 1; 
             overflow: hidden;
             background-color: #1a1c24;
             position: relative;
@@ -90,7 +89,7 @@
         .gallery-item img { 
             width: 100%; 
             height: 100%; 
-            object-fit: cover; /* Crops photos to a perfect square automatically */
+            object-fit: cover; 
             display: block;
         }
         footer { padding: 40px 20px; background: #060709; }
@@ -126,12 +125,11 @@
         </div>
     </section>
     
-    <!-- Lookbook Section stretching wider for grid styling -->
     <section style="max-width: 100%; background: rgba(0, 0, 0, 0.2); padding: 50px 0;">
         <div style="max-width: 450px; margin: 0 auto; padding: 0 20px;">
             <div class="section-headline">Our Fresh Cuts</div>
             <div class="showcase-vault">
-                <p style="font-size: 14px; margin: 0 0 15px 0; color: #a0aec0;">Studio Portfolio Vault (Add your hairstyles)</p>
+                <p style="font-size: 14px; margin: 0 0 15px 0; color: #a0aec0;">Local Preview (Images added here show on your phone only)</p>
                 <label class="upload-trigger">
                     📷 Choose Photo
                     <input type="file" id="imageUpload" accept="image/*" style="display: none;">
@@ -139,8 +137,19 @@
             </div>
         </div>
         
-        <!-- Grid Container out of constraint to flow edge-to-edge -->
-        <div id="galleryGrid"></div>
+        <!-- Grid Container displaying your 10 uploaded master cuts -->
+        <div id="galleryGrid">
+            <div class="gallery-item"><img src="https://ibb.co"></div>
+            <div class="gallery-item"><img src="https://ibb.co"></div>
+            <div class="gallery-item"><img src="https://ibb.co"></div>
+            <div class="gallery-item"><img src="https://ibb.co"></div>
+            <div class="gallery-item"><img src="https://ibb.co"></div>
+            <div class="gallery-item"><img src="https://ibb.co"></div>
+            <div class="gallery-item"><img src="https://ibb.co"></div>
+            <div class="gallery-item"><img src="https://ibb.co"></div>
+            <div class="gallery-item"><img src="https://ibb.co"></div>
+            <div class="gallery-item"><img src="https://ibb.co"></div>
+        </div>
     </section>
     
     <footer>
@@ -165,7 +174,6 @@
 
         function loadSavedImages() {
             const savedImages = JSON.parse(localStorage.getItem('barberCuts')) || [];
-            galleryGrid.innerHTML = '';
             savedImages.forEach(imgData => { renderImageCard(imgData); });
         }
 
@@ -175,7 +183,7 @@
             const img = document.createElement('img');
             img.src = src;
             container.appendChild(img);
-            galleryGrid.prepend(container);
+            galleryGrid.insertBefore(container, galleryGrid.firstChild);
         }
 
         imageUpload.addEventListener('change', function(e) {
@@ -187,29 +195,11 @@
                     img.onload = function() {
                         const canvas = document.createElement('canvas');
                         const ctx = canvas.getContext('2d');
-                        
                         const max_size = 500;
-                        let width = img.width;
-                        let height = img.height;
-                        
-                        if (width > height) {
-                            if (width > max_size) { height *= max_size / width; width = max_size; }
-                        } else {
-                            if (height > max_size) { width *= max_size / height; height = max_size; }
-                        }
-                        
-                        canvas.width = width;
-                        canvas.height = height;
+                        let width = img.width; let height = img.height;
+                        if (width > height) { if (width > max_size) { height *= max_size / width; width = max_size; } } 
+                        else { if (height > max_size) { width *= max_size / height; height = max_size; } }
+                        canvas.width = width; canvas.height = height;
                         ctx.drawImage(img, 0, 0, width, height);
-                        
                         const compressedBase64 = canvas.toDataURL('image/jpeg', 0.6);
-                        const savedImages = JSON.parse(localStorage.getItem('barberCuts')) || [];
-                        savedImages.push(compressedBase64);
-                        localStorage.setItem('barberCuts', JSON.stringify(savedImages));
                         
-                        renderImageCard(compressedBase64);
-                    };
-                    img.src = event.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
